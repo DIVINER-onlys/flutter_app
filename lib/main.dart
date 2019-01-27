@@ -119,6 +119,8 @@ import 'demo/listview_demo.dart';
 import 'demo/basic_demo.dart';
 import 'demo/layout_demo.dart';
 import 'demo/view_demo.dart';
+import 'demo/sliver_demo.dart';
+import 'demo/navigator_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -133,7 +135,12 @@ class MyApp extends StatelessWidget{
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
         splashColor: Colors.white70
       ),
-      home: Home()
+      // home: NavigatorDemo(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        '/about': (context) => Page(title: 'About')
+      }
     );
   }
 }
@@ -178,7 +185,8 @@ class Home extends StatelessWidget{
             ListViewDemo(),
             BasicDemo(),
             // Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
-            LayoutDemo(),
+            // LayoutDemo(),
+            SliverDemo(),
             ViewDemo()
           ],
         ),
