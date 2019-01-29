@@ -4,6 +4,10 @@ import 'form_demo.dart';
 import 'checkbox_demo.dart';
 import 'date_time_demo.dart';
 import 'simple_dialog_demo.dart';
+import 'alert_dialog_demo.dart';
+import 'bottom_sheet_demo.dart';
+import 'snack_bar_demo.dart';
+import 'expansion_panel_demo.dart';
 
 class MaterialComponents extends StatelessWidget {
   @override
@@ -12,6 +16,10 @@ class MaterialComponents extends StatelessWidget {
       appBar: AppBar(title: Text('MaterialComponents')),
       body: ListView(
         children: <Widget>[
+          ListItem(title: 'ExpansionPanel', page: ExpansionPanelDemo()),
+          ListItem(title: 'SnackBar', page: SnackBarDemo()),
+          ListItem(title: 'BottomSheep', page: BottomSheepDemo()),
+          ListItem(title: 'AlertDialog', page: AlertDialogDemo()),
           ListItem(title: 'SimpleDialog', page: SimpleDialogDemo()),
           ListItem(title: 'DateTime', page: DateTimeDemo()),
           ListItem(title: 'Checkbox', page: CheckboxDemo()),
