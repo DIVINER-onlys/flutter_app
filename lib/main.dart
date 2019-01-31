@@ -124,6 +124,7 @@ import 'demo/navigator_demo.dart';
 import 'demo/form_demo.dart';
 import 'demo/material_components.dart';
 import 'demo/state_management_demo.dart';
+import 'demo/stream/stream_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -140,13 +141,14 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/state-management',
+      initialRoute: '/stream',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
         '/form': (context) => FormDemo(),
         '/mdc':(context) => MaterialComponents(),
-        '/state-management': (context) => StateManagementDemo()
+        '/state-management': (context) => StateManagementDemo(),
+        '/stream': (context) => StreamDemo()
       }
     );
   }
