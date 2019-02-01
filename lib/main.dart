@@ -126,6 +126,7 @@ import 'demo/material_components.dart';
 import 'demo/state_management_demo.dart';
 import 'demo/stream/stream_demo.dart';
 import 'demo/state/rxdart_demo.dart';
+import 'demo/bloc/bloc_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -142,7 +143,7 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/rxdart',
+      initialRoute: '/bloc',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
@@ -150,7 +151,8 @@ class MyApp extends StatelessWidget{
         '/mdc':(context) => MaterialComponents(),
         '/state-management': (context) => StateManagementDemo(),
         '/stream': (context) => StreamDemo(),
-        '/rxdart': (context) => RxDartDemo()
+        '/rxdart': (context) => RxDartDemo(),
+        '/bloc': (context) => BlocDemo()
       }
     );
   }
