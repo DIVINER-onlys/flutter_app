@@ -132,6 +132,7 @@ import 'demo/bloc/bloc_demo.dart';
 import 'demo/http/http_demo.dart';
 import 'demo/animation/animation_demo.dart';
 import 'demo/i18n/i118n_demo.dart';
+import 'demo/test/test_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -161,7 +162,7 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/i18n',
+      initialRoute: '/test',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
@@ -173,7 +174,8 @@ class MyApp extends StatelessWidget{
         '/bloc': (context) => BlocDemo(),
         '/http': (context) => HttpDemo(),
         '/animation': (context) => AnimationDemo(),
-        '/i18n': (context) => I18nDemo()
+        '/i18n': (context) => I18nDemo(),
+        '/test': (context) => TestDemo()
       }
     );
   }
