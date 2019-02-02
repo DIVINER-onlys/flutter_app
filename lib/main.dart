@@ -113,6 +113,8 @@
 
 // 2019/1/26
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_app/demo/i18n/map/sam_demo_localizations.dart';
 import 'demo/drawer_demo.dart';
 import 'demo/bottom_navigation_bar_demo.dart';
 import 'demo/listview_demo.dart';
@@ -129,6 +131,7 @@ import 'demo/state/rxdart_demo.dart';
 import 'demo/bloc/bloc_demo.dart';
 import 'demo/http/http_demo.dart';
 import 'demo/animation/animation_demo.dart';
+import 'demo/i18n/i118n_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -136,6 +139,19 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      locale: Locale('zh', 'CN'),
+      // localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+      //   return Locale('en', 'US');
+      // },
+      localizationsDelegates: [
+        SamDemoLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('zh', 'CN')
+      ],
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -145,7 +161,7 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/animation',
+      initialRoute: '/i18n',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
@@ -156,7 +172,8 @@ class MyApp extends StatelessWidget{
         '/rxdart': (context) => RxDartDemo(),
         '/bloc': (context) => BlocDemo(),
         '/http': (context) => HttpDemo(),
-        '/animation': (context) => AnimationDemo()
+        '/animation': (context) => AnimationDemo(),
+        '/i18n': (context) => I18nDemo()
       }
     );
   }
