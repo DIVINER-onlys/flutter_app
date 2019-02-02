@@ -128,7 +128,7 @@ import 'demo/stream/stream_demo.dart';
 import 'demo/state/rxdart_demo.dart';
 import 'demo/bloc/bloc_demo.dart';
 import 'demo/http/http_demo.dart';
-import 'demo/animation_demo.dart';
+import 'demo/animation/animation_demo.dart';
 
 void main() => runApp(MyApp());
 
