@@ -128,6 +128,7 @@ import 'demo/stream/stream_demo.dart';
 import 'demo/state/rxdart_demo.dart';
 import 'demo/bloc/bloc_demo.dart';
 import 'demo/http/http_demo.dart';
+import 'demo/animation_demo.dart';
 
 void main() => runApp(MyApp());
 
@@ -144,7 +145,7 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/http',
+      initialRoute: '/animation',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
@@ -153,7 +154,9 @@ class MyApp extends StatelessWidget{
         '/state-management': (context) => StateManagementDemo(),
         '/stream': (context) => StreamDemo(),
         '/rxdart': (context) => RxDartDemo(),
-        '/http': (context) => HttpDemo()
+        '/bloc': (context) => BlocDemo(),
+        '/http': (context) => HttpDemo(),
+        '/animation': (context) => AnimationDemo()
       }
     );
   }
