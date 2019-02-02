@@ -18,7 +18,7 @@ class MaterialComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('MaterialComponents')),
+      // appBar: AppBar(title: Text('MaterialComponents')),
       body: ListView(
         children: <Widget>[
           ListItem(title: 'Stepper', page: StepperDemo()),

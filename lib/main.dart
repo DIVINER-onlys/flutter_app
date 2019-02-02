@@ -133,6 +133,7 @@ import 'demo/http/http_demo.dart';
 import 'demo/animation/animation_demo.dart';
 import 'demo/i18n/i118n_demo.dart';
 import 'demo/test/test_demo.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 void main() => runApp(MyApp());
 
@@ -162,7 +163,7 @@ class MyApp extends StatelessWidget{
         accentColor: Colors.pinkAccent
       ),
       // home: NavigatorDemo(),
-      initialRoute: '/test',
+      initialRoute: '/',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About'),
@@ -186,48 +187,95 @@ class Home extends StatelessWidget{
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
-      child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          // leading: IconButton(
-          //   icon: Icon(Icons.menu),
-          //   tooltip: 'Navigation',
-          //   onPressed: () => debugPrint('Navigation button is pressed.'),
-          // ),
-          title: Text('Flutter Demo'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              tooltip: 'Search',
-              onPressed: () => debugPrint('Search button is pressed.'),
-            )
-          ],
-          elevation: 0.0,
-          bottom: TabBar(
-            unselectedLabelColor: Colors.black38,
-            indicatorColor: Colors.black54,
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorWeight: 1.0,
-            tabs: <Widget>[
-              Tab(icon: Icon(Icons.local_florist)),
-              Tab(icon: Icon(Icons.change_history)),
-              Tab(icon: Icon(Icons.directions_bike)),
-              Tab(icon: Icon(Icons.view_quilt))
+      child: ScopedModel(
+        model: HomeIndexModel(),
+        child: Scaffold(
+          backgroundColor: Colors.grey[100],
+          appBar: AppBar(
+            // leading: IconButton(
+            //   icon: Icon(Icons.menu),
+            //   tooltip: 'Navigation',
+            //   onPressed: () => debugPrint('Navigation button is pressed.'),
+            // ),
+            title: Text('Flutter Demo'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.search),
+                tooltip: 'Search',
+                onPressed: () => debugPrint('Search button is pressed.'),
+              )
             ],
+            elevation: 0.0,
+            bottom: TabBar(
+              unselectedLabelColor: Colors.black38,
+              indicatorColor: Colors.black54,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 1.0,
+              tabs: <Widget>[
+                Tab(icon: Icon(Icons.local_florist)),
+                Tab(icon: Icon(Icons.change_history)),
+                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.view_quilt))
+              ],
+            ),
           ),
+          body: ScopedModelDescendant<HomeIndexModel>(
+            // rebuildOnChange: false,
+            builder: (context, _, model) {
+              switch(model.homeIndex) {
+                case 0:
+                  return TabBarView(
+                    children: <Widget>[
+                      ListViewDemo(),
+                      BasicDemo(),
+                      // Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
+                      // LayoutDemo(),
+                      SliverDemo(),
+                      // ScopedModelDescendant<HomeIndexModel>(
+                      //   // rebuildOnChange: false,
+                      //   builder: (context, _, model) => Text('${model.homeIndex}'),
+                      // ),
+                      ViewDemo()
+                    ],
+                  );
+                  break;
+                case 1:
+                  return FormDemo();
+                  break;
+                case 2:
+                  return MaterialComponents();
+                  break;
+                case 3:
+                  return OtherList();
+                  break;
+                default:
+              }
+            }
+          ), 
+          drawer: DrawerDemo(),
+          bottomNavigationBar: BottomNavigationBarDemo()
         ),
-        body: TabBarView(
-          children: <Widget>[
-            ListViewDemo(),
-            BasicDemo(),
-            // Icon(Icons.directions_bike, size: 128.0, color: Colors.black12),
-            // LayoutDemo(),
-            SliverDemo(),
-            ViewDemo()
-          ],
-        ),
-        drawer: DrawerDemo(),
-        bottomNavigationBar: BottomNavigationBarDemo()
+      )
+    );
+  }
+}
+
+class OtherList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // appBar: AppBar(title: Text('OtherList')),
+      body: ListView(
+        children: <Widget>[
+          ListItem(title: 'state-management', page: StateManagementDemo()),
+          ListItem(title: 'stream', page: StreamDemo()),
+          ListItem(title: 'rxdart', page: RxDartDemo()),
+          ListItem(title: 'bloc', page: BlocDemo()),
+          ListItem(title: 'http', page: HttpDemo()),
+          ListItem(title: 'animation', page: AnimationDemo()),
+          ListItem(title: 'i18n', page: I18nDemo()),
+          ListItem(title: 'test', page: TestDemo()),
+        ],
       ),
     );
   }
